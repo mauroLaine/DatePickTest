@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">DatePickerTest</string>
+    <string name="date_picker">Date picker</string>
+    <string name="date_range_picker">Date Range picker</string>
 </resources>
