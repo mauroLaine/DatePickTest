@@ -16,10 +16,31 @@ class MainActivity : AppCompatActivity() {
         button_date.setOnClickListener {
             showDatePicker()
         }
+
+        button_date_range.setOnClickListener {
+            showDateRangePicker()
+        }
     }
 
     private fun showDatePicker() {
         val builder = MaterialDatePicker.Builder.datePicker()
+        val picker = builder.build()
+        picker.show(supportFragmentManager, picker.toString())
+
+        picker.addOnCancelListener {
+            Log.d(TAG, "Dialog was cancelled")
+        }
+        picker.addOnNegativeButtonClickListener {
+            Log.d(TAG, "Dialog Negative Button was clicked")
+        }
+        picker.addOnPositiveButtonClickListener {
+            Log.d(TAG, "Date String = ${picker.headerText}:: Date epoch value = ${it}")
+            showValue(picker.headerText)
+        }
+    }
+
+    private fun showDateRangePicker() {
+        val builder = MaterialDatePicker.Builder.dateRangePicker()
         val picker = builder.build()
         picker.show(supportFragmentManager, picker.toString())
 
